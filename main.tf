@@ -30,7 +30,7 @@ resource "azurerm_app_service_plan" "example" {
 resource "azurerm_application_insights" "example" {
   name                = "example-appinsights"
   location            = "Poland Central"
-  resource_group_name = "azurerm_resource_group.rg.name
+  resource_group_name = azurerm_resource_group.rg.name
   application_type    = "web"
 }
 
