@@ -45,5 +45,5 @@ steps:
     ConnectionType: 'AzureRM'
     azureSubscription: 'TestAppConnectionName'
     appType: 'webApp'
-    WebAppName: 'mywebapp54311344545'
+    WebAppName: 'mywebapp5431134432424545'
     packageForLinux: '$(Build.ArtifactStagingDirectory)/**/*.zip'
