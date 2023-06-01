@@ -28,8 +28,8 @@ steps:
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
 
-- script: cd backend  dotnet build --configuration $(buildConfiguration)
-  displayName: 'dotnet build $(buildConfiguration)'
+- script: cd backend && dotnet build --configuration $(BuildConfiguration)
+  displayName: 'dotnet build $(BuildConfiguration)'
 
 - task: DotNetCoreCLI@2
   inputs:
