@@ -4,7 +4,7 @@ provider "azurerm" {
 
 resource "azurerm_resource_group" "rg" {
   name     = "testGroupT"
-  location = "Poland Central"
+  location = "North Europe"
 }
 
 terraform {
