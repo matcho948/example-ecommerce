@@ -28,7 +28,7 @@ resource "azurerm_app_service_plan" "example" {
 }
 
 resource "azurerm_application_insights" "example" {
-  name                = "example-appinsights"
+  name                = "example-appinsights421214211142"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
   application_type    = "web"
