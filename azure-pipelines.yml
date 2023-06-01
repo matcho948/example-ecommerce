@@ -1,19 +1,28 @@
 # Starter pipeline
-trigger:
-  - main
-
-- task: TerraformInstaller@0
-  inputs:
-    terraformVersion: '0.15.1'
-- task: AzureCLI@2
-  inputs:
-    azureSubscription: 'TestAppConnectionName'
-    scriptType: 'ps'
-    scriptLocation: 'inlineScript'
-    inlineScript: |
-      terraform init
-      terraform plan
-      terraform apply
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
+
+trigger:
+- main
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  vmImageName: 'ubuntu-latest'
+  terraformVersion: '0.15.1'
+
+steps:
+- task: TerraformInstaller@0
+  inputs:
+    terraformVersion: $(terraformVersion)
+- task: AzureCLI@2
+  inputs:
+    azureSubscription: 'Azure'
+    scriptType: 'ps'
+    scriptLocation: 'inlineScript'
+
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
