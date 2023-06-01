@@ -5,8 +5,7 @@
 
 trigger:
 - main
-pool:
-  vmImage: ubuntu-latest
+pool: Agent
 
 variables:
   vmImageName: 'ubuntu-latest'
