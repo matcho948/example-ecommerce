@@ -19,6 +19,10 @@ steps:
     azureSubscription: 'TestAppConnectionName'
     scriptType: 'ps'
     scriptLocation: 'inlineScript'
+    inlineScript: |
+      terraform init
+      terraform validate
+      terraform apply
 - script: |
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
