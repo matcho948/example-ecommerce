@@ -56,6 +56,7 @@ resource "azurerm_app_service" "example" {
 
 resource "azurerm_sql_server" "example" {
   name                         = "mywebappsqlserver123"
+  fully_qualified_domain_name  = "mywebappsqlserver123.database.windows.net"
   resource_group_name          = azurerm_resource_group.rg.name
   location                     = azurerm_resource_group.rg.location
   version                      = "12.0"
