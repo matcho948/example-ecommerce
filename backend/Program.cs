@@ -18,6 +18,7 @@ builder.Services.AddDbContext<BackendDbContext>(options => options.UseSqlServer(
 // TODO
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IImageStorageService, ImageUploadService>();
 builder.Services.AddScoped<IInventoryRepository, InventoryRepository>();
 builder.Services.AddScoped<IImageRepository, ImageRepository>();
 var app = builder.Build();
@@ -45,7 +46,7 @@ new InventoryModule()
 
 new ImageUploadModule()
     // TODO replace with AD Auth and Blob Storage implementation
-    .AddModule(new AuthorizationAdapters(mockAuthorizationService.Authorize), new MockImageUploadService())
+    .AddModule(new AuthorizationAdapters(mockAuthorizationService.Authorize), new ImageUploadService())
     .ToList()
     .ForEach(endpoint => app.MapMethods(endpoint.Path, new[] { endpoint.Method.Method }, endpoint.Handler));
 
