@@ -88,11 +88,6 @@ resource "azurerm_storage_container" "example" {
   container_access_type = "private"
 }
 
-
-resource "azuread_service_principal" "example" {
-  application_id = azuread_application.example.application_id
-}
-
 data "azuread_domains" "example" {
   only_initial = true
 }
