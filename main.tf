@@ -88,14 +88,6 @@ resource "azurerm_storage_container" "example" {
   container_access_type = "private"
 }
 
-data "azuread_application_template" "example" {
-  display_name = azurerm_app_service.example.name
-}
-
-resource "azuread_application" "example" {
-  display_name = "example"
-  template_id  = data.azuread_application_template.example.template_id
-}
 
 resource "azuread_service_principal" "example" {
   application_id = azuread_application.example.application_id
@@ -106,7 +98,7 @@ data "azuread_domains" "example" {
 }
 
 resource "azuread_application" "example" {
-  display_name = "azurerm_app_service.example.name"
+  display_name = azurerm_app_service.example.name
 }
 
 resource "azuread_service_principal" "example" {
