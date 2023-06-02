@@ -85,7 +85,7 @@ resource "azurerm_storage_container" "example" {
 }
 
 data "azuread_application_template" "example" {
-  display_name = "adexamplewebapp"
+  display_name = azurerm_app_service.example.name
 }
 
 resource "azuread_application" "example" {
