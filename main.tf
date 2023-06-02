@@ -2,6 +2,10 @@ provider "azurerm" {
   features {}
 }
 
+provider "azuread" {
+  tenant_id = "a7df4dc3-cdc1-43b0-bf57-80a964db9869"
+}
+
 resource "azurerm_resource_group" "rg" {
   name     = "testGroupT"
   location = "North Europe"
@@ -97,3 +101,14 @@ resource "azuread_service_principal" "example" {
   application_id = azuread_application.example.application_id
 }
 
+data "azuread_domains" "example" {
+  only_initial = true
+}
+
+resource "azuread_application" "example" {
+  display_name = "azurerm_app_service.example.name
+}
+
+resource "azuread_service_principal" "example" {
+  application_id = azuread_application.example.application_id
+}
