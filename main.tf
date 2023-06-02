@@ -88,10 +88,6 @@ resource "azurerm_storage_container" "example" {
   container_access_type = "private"
 }
 
-data "azuread_domains" "example" {
-  only_initial = true
-}
-
 resource "azuread_application" "example" {
   display_name = azurerm_app_service.example.name
 }
