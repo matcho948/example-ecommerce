@@ -15,6 +15,6 @@ public class ImageUploadService : IImageStorageService
         BlobClient blob = blobContainerClient.GetBlobClient(imageId.ToString() + ".jpg");
         await blob.UploadAsync(imageStream, true);
         imageStream.Dispose();
-        return new Uri(blob.Uri.ToString());
+        return new Uri(blob.Uri.ToString()).PathAndQuery;
     }
 }
