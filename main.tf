@@ -44,3 +44,20 @@ resource "azurerm_app_service" "example" {
   }
 }
 
+resource "azurerm_sql_server" "example" {
+  name                         = "mywebappsqlserver123"
+  resource_group_name          = azurerm_resource_group.rg.name
+  location                     = azurerm_resource_group.rg.location
+  version                      = "12.0"
+  administrator_login          = "admin"
+  administrator_login_password = "password"
+}
+
+resource "azurerm_sql_database" "example" {
+  name                = "example-database"
+  resource_group_name = azurerm_resource_group.rg.name
+  server_name         = azurerm_sql_server.example.name
+  location            = azurerm_resource_group.rg.location
+  edition             = "Basic"
+}
+
