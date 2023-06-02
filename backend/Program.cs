@@ -6,6 +6,7 @@ using Backend.InventoryModule;
 using Backend.MockImplementations;
 using Backend.ProductCatalogModule;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Web;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.WebHost.UseIISIntegration();
@@ -21,12 +22,14 @@ builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IImageStorageService, ImageUploadService>();
 builder.Services.AddScoped<IInventoryRepository, InventoryRepository>();
 builder.Services.AddScoped<IImageRepository, ImageRepository>();
+builder.Services.AddMicrosoftIdentityWebApiAuthentication(builder.Configuration);
+builder.Services.AddAuthorization();
 var app = builder.Build();
 
 app.UseHttpsRedirection();
 
 // When implementing Auth, uncomment this line:
-// app.MapGet("/", [Authorize] () => "Hello World!");
+app.MapGet("/", [Authorize] () => "Hello World!");
 // and comment this one
 app.MapGet("/", () => "Hello World!");
 
@@ -50,4 +53,6 @@ new ImageUploadModule()
     .ToList()
     .ForEach(endpoint => app.MapMethods(endpoint.Path, new[] { endpoint.Method.Method }, endpoint.Handler));
 
+app.UseAuthentication();
+app.UseAuthorization();
 app.Run();
