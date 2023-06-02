@@ -46,7 +46,7 @@ new InventoryModule()
 
 new ImageUploadModule()
     // TODO replace with AD Auth and Blob Storage implementation
-    .AddModule(new AuthorizationAdapters(mockAuthorizationService.Authorize), new ImageUploadService())
+    .AddModule(new AuthorizationAdapters(mockAuthorizationService.Authorize), new ImageUploadService(builder.Configuration))
     .ToList()
     .ForEach(endpoint => app.MapMethods(endpoint.Path, new[] { endpoint.Method.Method }, endpoint.Handler));
 
