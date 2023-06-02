@@ -86,7 +86,7 @@ resource "azurerm_storage_container" "example" {
 
 resource "azuread_application" "example" {
   display_name = azurerm_app_service.example.name
-  homepage     = "https://${azurerm_app_service.example.name}.azurewebsites.net"
+  homepage = "https://${azurerm_app_service.example.name}.azurewebsites.net"
   identifier_uris = [
     "https://${azurerm_app_service.example.name}.azurewebsites.net"
   ]
