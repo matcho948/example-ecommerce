@@ -6,6 +6,7 @@ using Backend.InventoryModule;
 using Backend.MockImplementations;
 using Backend.ProductCatalogModule;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.Identity.Web;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -31,7 +32,6 @@ app.UseHttpsRedirection();
 // When implementing Auth, uncomment this line:
 app.MapGet("/", [Authorize] () => "Hello World!");
 // and comment this one
-app.MapGet("/", () => "Hello World!");
 
 MockAuthorizationService mockAuthorizationService = new();
 
