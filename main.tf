@@ -106,7 +106,7 @@ data "azuread_domains" "example" {
 }
 
 resource "azuread_application" "example" {
-  display_name = "azurerm_app_service.example.name
+  display_name = "azurerm_app_service.example.name"
 }
 
 resource "azuread_service_principal" "example" {
