@@ -84,12 +84,13 @@ resource "azurerm_storage_container" "example" {
   container_access_type = "private"
 }
 
+data "azuread_application_template" "example" {
+  display_name = "adexamplewebapp"
+}
+
 resource "azuread_application" "example" {
-  display_name = azurerm_app_service.example.name
-  homepage = "https://${azurerm_app_service.example.name}.azurewebsites.net"
-  identifier_uris = [
-    "https://${azurerm_app_service.example.name}.azurewebsites.net"
-  ]
+  display_name = "example"
+  template_id  = data.azuread_application_template.example.template_id
 }
 
 resource "azuread_service_principal" "example" {
